@@ -28,3 +28,34 @@ agent. This yields 2 (potentially different) scores. We then take the maximum of
 - This yields a single score for each episode.  
 
 The environment is considered solved, when the average (over 100 episodes) of those scores is at least +0.5.
+
+### Running locally
+To set up your python environment to run the code in this repository, follow the instructions below. 
+
+1. If not already installed, install the Anaconda Python distribution from [here](https://www.anaconda.com/distribution/). 
+
+1. Ensure you have the "Build Tools for Visual Studio 2019" installed from this 
+[site](https://visualstudio.microsoft.com/downloads/). This [article](https://towardsdatascience.com/how-to-install-openai-gym-in-a-windows-environment-338969e24d30) 
+may also be very helpful.  This was confirmed to work in Windows 10 Home.  
+
+1. Create (and activate) a new `tennis` environment with Python 3.6 and the OpenAI [gym](https://github.com/openai/gym).
+If you need to delete the `tennis` environment type:  `conda env remove --name tennis`.  To deactivate the environment 
+type: `conda deactivate`.
+
+    ```bash
+    conda update -n base -c defaults conda -y
+    conda env create -f environment.yml
+    activate tennis
+    ```
+
+1. Install CPU version of PyTorch 1.5.1. 
+
+    ```bash
+   conda install pytorch cpuonly -c pytorch -y
+    ```
+
+1. [OPTIONAL] Install GPU version of PyTorch 1.5.1 if you have a local GPU.
+
+    ```bash
+   conda install pytorch -c pytorch -y
+    ```

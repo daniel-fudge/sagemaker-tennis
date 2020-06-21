@@ -45,7 +45,7 @@ class Actor(nn.Module):
         """Build an actor (policy) network that maps states -> actions."""
         x = nn_f.relu(self.fc1(state))
         x = nn_f.relu(self.fc2(x))
-        return nn_f.tanh(self.fc3(x))
+        return torch.tanh(self.fc3(x))
 
 
 # noinspection DuplicatedCode

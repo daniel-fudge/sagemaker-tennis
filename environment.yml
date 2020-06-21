@@ -1,0 +1,12 @@
+name: tennis
+channels:
+  - defaults
+dependencies:
+  - pip
+  - python=3.6
+  - matplotlib
+  - pillow
+  - grpcio-tools
+  - pip:
+    - gym
+    - box2d-py~=2.3.5
