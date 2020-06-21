@@ -2,6 +2,8 @@
   <dictionary name="Daniel">
     <words>
       <w>cuda</w>
+      <w>gloo</w>
+      <w>gpus</w>
       <w>hyperparameters</w>
       <w>ornstein</w>
       <w>uhlenbeck</w>

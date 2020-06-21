@@ -3,10 +3,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as nn_f
 
-# Set Architecture hyperparameters
-FC1_UNITS = 128  # Size if 1st Hidden layer
-FC2_UNITS = 64   # Size if 2nd Hidden layer
-
 
 def hidden_init(layer):
     fan_in = layer.weight.data.size()[0]
@@ -18,19 +14,21 @@ def hidden_init(layer):
 class Actor(nn.Module):
     """Actor (Policy) Model."""
 
-    def __init__(self, state_size, action_size, seed):
+    def __init__(self, state_size, action_size, seed, fc1, fc2):
         """Initialize parameters and build model.
 
         Args:
             state_size (int): Dimension of each state
             action_size (int): Dimension of each action
             seed (int): Random seed
+            fc1 (int):  Size of 1st hidden layer
+            fc2 (int):  Size of 2nd hidden layer
         """
         super(Actor, self).__init__()
         self.seed = torch.manual_seed(seed)
-        self.fc1 = nn.Linear(state_size, FC1_UNITS)
-        self.fc2 = nn.Linear(FC1_UNITS, FC2_UNITS)
-        self.fc3 = nn.Linear(FC2_UNITS, action_size)
+        self.fc1 = nn.Linear(state_size, fc1)
+        self.fc2 = nn.Linear(fc1, fc2)
+        self.fc3 = nn.Linear(fc2, action_size)
         self.reset_parameters()
 
     def reset_parameters(self):
@@ -52,19 +50,21 @@ class Actor(nn.Module):
 class Critic(nn.Module):
     """Critic (Value) Model."""
 
-    def __init__(self, state_size, action_size, seed):
+    def __init__(self, state_size, action_size, seed, fc1, fc2):
         """Initialize parameters and build model.
 
         Args:
             state_size (int): Dimension of each state
             action_size (int): Dimension of each action
             seed (int): Random seed
+            fc1 (int):  Size of 1st hidden layer
+            fc2 (int):  Size of 2nd hidden layer
         """
         super(Critic, self).__init__()
         self.seed = torch.manual_seed(seed)
-        self.fcs1 = nn.Linear(state_size, FC1_UNITS)
-        self.fc2 = nn.Linear(FC1_UNITS + action_size, FC2_UNITS)
-        self.fc3 = nn.Linear(FC2_UNITS, 1)
+        self.fcs1 = nn.Linear(state_size, fc1)
+        self.fc2 = nn.Linear(fc1 + action_size, fc2)
+        self.fc3 = nn.Linear(fc2, 1)
         self.reset_parameters()
 
     def reset_parameters(self):
