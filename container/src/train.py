@@ -153,7 +153,7 @@ def setup_environment():
 
     # size of each action
     _action_size = brain.vector_action_space_size
-    logger.info('Size of each action:', _action_size)
+    logger.info('Size of action space: {}'.format(_action_size))
 
     # examine the state space
     _state_size = env_info.vector_observations.shape[1]
