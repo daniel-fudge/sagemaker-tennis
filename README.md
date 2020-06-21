@@ -59,3 +59,9 @@ type: `conda deactivate`.
     ```bash
    conda install pytorch -c pytorch -y
     ```
+
+1. Execute the training process.
+
+    ```bash
+   python run_test.py
+    ```
