@@ -60,8 +60,9 @@ type: `conda deactivate`.
    conda install pytorch -c pytorch -y
     ```
 
-1. Execute the training process.
+1. Execute the training process simply double click the `train.bat` file.  You should get an average score of 0.3 after 
+1700 episodes.  A score of 0.5 solves the environment.
 
     ```bash
-   python run_test.py
+   train.bat
     ```

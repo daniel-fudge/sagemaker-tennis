@@ -111,6 +111,8 @@ def train(epochs, max_t, output_dir, model_dir):
 
     # Save models weights and scores
     # -----------------------------------------------------------------------------------
+    for p in [p for p in [model_dir, output_dir] if not os.path.isdir(p)]:
+        os.mkdir(p)
     for i in range(2):
         torch.save(agents[i].actor_target.state_dict(),
                    os.path.join(model_dir, 'checkpoint_actor_{}.pth'.format(i + 1)))
