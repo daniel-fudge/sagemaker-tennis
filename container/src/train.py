@@ -17,7 +17,7 @@ import torch
 from unityagents import UnityEnvironment
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 
 if torch.cuda.is_available():
     device = torch.device("cuda:0")
@@ -103,10 +103,10 @@ def train(epochs, max_t, output_dir, model_dir):
         scores_window.append(score)  # save most recent score
         scores.append(score)  # save most recent score
         if i_episode % 100 == 0:
-            logger.info('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)))
+            print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)))
         if np.mean(scores_window) >= 0.5:
             tmp_str = '\nEnvironment solved in {:d} episodes!\tAverage Score: {:.2f}'
-            logger.info(tmp_str.format(i_episode, np.mean(scores_window)))
+            print(tmp_str.format(i_episode, np.mean(scores_window)))
             break
 
     # Save models weights and scores
@@ -131,13 +131,14 @@ def setup_environment():
         int:  The state size
     """
 
-    root = os.path.split(__file__)[0]
+    src = os.path.split(__file__)[0]
     if platform.system() == 'Windows':
         logger.info("Loading Windows x86 64-bit Tennis environment.")
+        root = os.path.split(root)[0]
         _env = UnityEnvironment(file_name=os.path.join(root, 'Tennis_Windows_x86_64', 'Tennis.exe'))
     elif platform.system() == 'Linux':
         logger.info("Loading Linux Tennis environment.")
-        _env = UnityEnvironment(file_name=os.path.join(root, 'Tennis_Linux_NoVis', 'Tennis.x86_64'))
+        _env = UnityEnvironment(file_name=os.path.join(src, 'Tennis_Linux_NoVis', 'Tennis.x86_64'))
     else:
         logger.critical("Only Windows and Linux supported.")
         raise RuntimeError
@@ -151,7 +152,7 @@ def setup_environment():
 
     # number of agents
     num_agents = len(env_info.agents)
-    logger.info('Number of agents:', num_agents)
+    logger.info('Number of agents: {}'.format(num_agents))
 
     # size of each action
     _action_size = brain.vector_action_space_size
@@ -204,12 +205,6 @@ if __name__ == '__main__':
     parser.add_argument('--output_dir', type=str, default=os.environ['SM_OUTPUT_DATA_DIR'],
                         help='where miscellaneous files should be saved')
     args = parser.parse_args()
-
-    # Delete the old output files
-    # -----------------------------------------------------------------------------------
-    for path in [p for p in [args.output_dir, args.model_dir] if os.path.isdir(p)]:
-        shutil.rmtree(path)
-        os.mkdir(path)
 
     # Setup the training environment
     # -----------------------------------------------------------------------------------

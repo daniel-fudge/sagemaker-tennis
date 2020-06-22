@@ -1,13 +1,19 @@
 ARG REGION=us-east-1
 
-# SageMaker PyTorch image
-FROM 520713654638.dkr.ecr.$REGION.amazonaws.com/sagemaker-pytorch:1.5.1-cpu-py3
+# Load the SageMaker PyTorch image
+FROM 520713654638.dkr.ecr.$REGION.amazonaws.com/sagemaker-pytorch:1.1.0-cpu-py3
+# FROM 520713654638.dkr.ecr.$REGION.amazonaws.com/sagemaker-pytorch:1.5.1-cpu-py3
 # FROM 520713654638.dkr.ecr.$REGION.amazonaws.com/sagemaker-pytorch:0.4.0-cpu-py3
-# FROM 763104351884.dkr.ecr.$REGION.amazonaws.com/pytorch-training:1.5.1-cpu-py36-ubuntu16.04
-ENV PATH="/opt/ml/code:${PATH}"
+
+# Update Python with the required packages
+RUN pip install --upgrade pip
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
 
 # /opt/ml and all subdirectories are utilized by SageMaker, we use the /code subdirectory to store our user code.
+ENV PATH="/opt/ml/code:${PATH}"
 COPY /src /opt/ml/code
+RUN chmod -R 755 /opt/ml/code
 
 # this environment variable is used by the SageMaker PyTorch container to determine our user code directory.
 ENV SAGEMAKER_SUBMIT_DIRECTORY /opt/ml/code
