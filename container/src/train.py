@@ -103,9 +103,9 @@ def train(epochs, max_t, output_dir, model_dir):
         scores_window.append(score)  # save most recent score
         scores.append(score)  # save most recent score
         if i_episode % 100 == 0:
-            print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)))
+            print('Episode {} Average Score: {:.2f}'.format(i_episode, np.mean(scores_window)))
         if np.mean(scores_window) >= 0.5:
-            tmp_str = '\nEnvironment solved in {:d} episodes!\tAverage Score: {:.2f}'
+            tmp_str = '\nEnvironment solved in {:d} episodes!  Average Score: {:.2f}'
             print(tmp_str.format(i_episode, np.mean(scores_window)))
             break
 
