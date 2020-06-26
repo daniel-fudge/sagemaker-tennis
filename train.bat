@@ -1,4 +1,4 @@
-SET SM_MODEL_DIR='C:\Users\Daniel\code\sagemaker-tennis\model-dir'
-SET SM_INPUT_DIR='C:\Users\Daniel\code\sagemaker-tennis\input-dir'
-SET SM_OUTPUT_DATA_DIR='C:\Users\Daniel\code\sagemaker-tennis\output-dir'
+SET SM_MODEL_DIR='model-dir'
+SET SM_INPUT_DIR='input-dir'
+SET SM_OUTPUT_DATA_DIR='output-dir'
 python container\src\train.py

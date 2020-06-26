@@ -29,8 +29,8 @@ agent. This yields 2 (potentially different) scores. We then take the maximum of
 
 The environment is considered solved, when the average (over 100 episodes) of those scores is at least +0.5.
 
-### Running locally
-#### First Setup and execution
+## Running locally
+### First Setup and execution
 To set up your python environment to run the code in this repository, follow the instructions below. 
 
 **_Note:_** These commands assume you are in a Windows PowerShell terminal.  If using an traditional command prompt you 
@@ -75,10 +75,30 @@ type: `conda deactivate`.
     ```bash
    train.bat
     ```
-#### Subsequent execution
+### Subsequent execution
 Assuming you have completed the above steps you can skip directly to the execution.
 
     ```bash
-    activate tennis
+    conda activate tennis
     train.bat
      ```
+## Running on AWS Sagemaker
+Please see [this](https://youtu.be/w2r8ffcBVSo) video if you are unfamiliar with starting an AWS Sagemaker Notebook 
+instance. 
+
+Running on AWS is divided into the following four Notebooks.
+1. [Building and Testing CPU Image](build-cpu.ipynb)   
+    - Describes the Docker image creation process
+    - Builds the CPU Docker image and publishes it to [ECR](https://aws.amazon.com/ecr/)
+    - Tests the image locally on the Notebook instance, useful for debugging
+    - Spawns a remote training job with the CPU image
+    - Retrieves the results from the associated [S3](https://aws.amazon.com/s3/) bucket 
+1. [Building and Testing GPU Image](build-gpu.ipynb)
+    - Builds the GPU Docker image and publishes it to [ECR](https://aws.amazon.com/ecr/)
+    - Spawns a remote training job with the GPU image
+    - Retrieves the results from the associated [S3](https://aws.amazon.com/s3/) bucket 
+1. [Cost and Timing Sensitivity](sensitivity.ipynb) [in-work]
+    - Compares the training [cost](https://aws.amazon.com/sagemaker/pricing/) and times on difference instance [types]https://aws.amazon.com/sagemaker/pricing/instance-types/)
+1. [Hyper-parameter Tuning](tuning.ipynb) [in-work]
+    - After determining the most cost and time effective instance type, tune the hyper-parameters
+    - This determines the set of hyper-parameters that minimizes the number of training epochs
