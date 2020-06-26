@@ -51,7 +51,7 @@ may also be very helpful.  This was confirmed to work in Windows 10 Home.
 If you need to delete the `tennis` environment type:  `conda env remove --name tennis`.  To deactivate the environment 
 type: `conda deactivate`.
 
-    ```bash
+    ```cmd
     conda update -n base -c defaults conda -y
     conda env create -f environment.yml
     conda activate tennis
@@ -59,29 +59,31 @@ type: `conda deactivate`.
 
 1. Install CPU version of PyTorch 1.1.0 (version matched to SageMaker). 
 
-    ```bash
+    ```cmd
    conda install pytorch=1.1.0 cpuonly -c pytorch -y
     ```
 
 1. [OPTIONAL] Install GPU version of PyTorch 1.1.0 if you have a local GPU.
 
-    ```bash
-   conda install pytorch=1.1.0 -c pytorch -y
+    ```cmd
+    conda install pytorch=1.1.0 -c pytorch -y
     ```
 
 1. Execute the training process simply double click the `train.bat` file.  You should get an average score of 0.3 after 
 1700 episodes.  A score of 0.5 solves the environment.
 
-    ```bash
-   train.bat
-    ```
-### Subsequent execution
-Assuming you have completed the above steps you can skip directly to the execution.
-
-    ```bash
-    conda activate tennis
+    ```cmd
     train.bat
-     ```
+    ```
+   
+### Subsequent execution
+Assuming you have completed the above steps you can skip directly to the execution.    
+
+```cmd
+conda activate tennis
+train.bat
+```
+
 ## Running on AWS Sagemaker
 Please see [this](https://youtu.be/w2r8ffcBVSo) video if you are unfamiliar with starting an AWS Sagemaker Notebook 
 instance. 
@@ -98,7 +100,7 @@ Running on AWS is divided into the following four Notebooks.
     - Spawns a remote training job with the GPU image
     - Retrieves the results from the associated [S3](https://aws.amazon.com/s3/) bucket 
 1. [Cost and Timing Sensitivity](sensitivity.ipynb) [in-work]
-    - Compares the training [cost](https://aws.amazon.com/sagemaker/pricing/) and times on difference instance [types]https://aws.amazon.com/sagemaker/pricing/instance-types/)
+    - Compares the training [cost](https://aws.amazon.com/sagemaker/pricing/) and times on difference instance [types](https://aws.amazon.com/sagemaker/pricing/instance-types/)
 1. [Hyper-parameter Tuning](tuning.ipynb) [in-work]
     - After determining the most cost and time effective instance type, tune the hyper-parameters
     - This determines the set of hyper-parameters that minimizes the number of training epochs
