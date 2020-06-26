@@ -5,8 +5,13 @@
 
 # Check for the gpu argument
 gpu="no"
-if [ ${1} == "gpu" ]; then
+if [[ ${1} == "gpu" ]]; then
     gpu="yes"
+fi
+
+# Unpack Tennis executable if not alerady unpacked
+if [ ! -d "container/src/Tennis_Linux_NoVis" ]; then
+    unzip container/Tennis_Linux_NoVis.zip -d container/src > /dev/null
 fi
 
 # Get the account number associated with the current IAM credentials
@@ -15,7 +20,6 @@ account=$(aws sts get-caller-identity --query Account --output text)
 if [ $? -ne 0 ]; then
     exit 255
 fi
-
 
 # Get the region defined in the current configuration (default to us-east-1 if none defined)
 region=$(aws configure get region)
