@@ -1,11 +1,14 @@
 <component name="ProjectDictionaryState">
   <dictionary name="Daniel">
     <words>
+      <w>amazonaws</w>
       <w>cuda</w>
       <w>gloo</w>
       <w>gpus</w>
       <w>hyperparameters</w>
       <w>ornstein</w>
+      <w>pytorch</w>
+      <w>sagemaker</w>
       <w>uhlenbeck</w>
       <w>unityagents</w>
     </words>

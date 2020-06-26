@@ -134,8 +134,7 @@ def setup_environment():
     src = os.path.split(__file__)[0]
     if platform.system() == 'Windows':
         logger.info("Loading Windows x86 64-bit Tennis environment.")
-        root = os.path.split(root)[0]
-        _env = UnityEnvironment(file_name=os.path.join(root, 'Tennis_Windows_x86_64', 'Tennis.exe'))
+        _env = UnityEnvironment(file_name=os.path.join(src, 'Tennis_Windows_x86_64', 'Tennis.exe'))
     elif platform.system() == 'Linux':
         logger.info("Loading Linux Tennis environment.")
         _env = UnityEnvironment(file_name=os.path.join(src, 'Tennis_Linux_NoVis', 'Tennis.x86_64'))

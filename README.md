@@ -4,7 +4,7 @@ This repo trains a Deep Reinforcement Learning (DRL) agent to solve the Unity ML
 Please see this [repo](https://github.com/daniel-fudge/reinforcement-learning-tennis) for a DRL implementation in a traditional environment.   
 
 ## Motivation
-This repo was generated to support the building of a custom trading environment and DRL alogorithm for portfolio optimization in this [repo](https://github.com/daniel-fudge/DRL-Portfolio-Optimization-Custom).
+This repo was generated to support the building of a custom trading environment and DRL algorithm for portfolio optimization in this [repo](https://github.com/daniel-fudge/DRL-Portfolio-Optimization-Custom).
 
 ## Project Details
 ### Tennis Environment
@@ -30,7 +30,16 @@ agent. This yields 2 (potentially different) scores. We then take the maximum of
 The environment is considered solved, when the average (over 100 episodes) of those scores is at least +0.5.
 
 ### Running locally
+#### First Setup and execution
 To set up your python environment to run the code in this repository, follow the instructions below. 
+
+**_Note:_** These commands assume you are in a Windows PowerShell terminal.  If using an traditional command prompt you 
+may have to slightly alter some of the commands. 
+1. Unpack the Windows Tennis executable into the `src` folder.  Note if corrupted you can get fresh version [here](https://github.com/udacity/deep-reinforcement-learning/tree/master/p3_collab-compet).
+
+   ```cmd
+   expand-archive container\Tennis_Windows_x86_64.zip container\src
+   ```
 
 1. If not already installed, install the Anaconda Python distribution from [here](https://www.anaconda.com/distribution/). 
 
@@ -45,19 +54,19 @@ type: `conda deactivate`.
     ```bash
     conda update -n base -c defaults conda -y
     conda env create -f environment.yml
-    activate tennis
+    conda activate tennis
     ```
 
-1. Install CPU version of PyTorch 1.5.1. 
+1. Install CPU version of PyTorch 1.1.0 (version matched to SageMaker). 
 
     ```bash
-   conda install pytorch cpuonly -c pytorch -y
+   conda install pytorch=1.1.0 cpuonly -c pytorch -y
     ```
 
-1. [OPTIONAL] Install GPU version of PyTorch 1.5.1 if you have a local GPU.
+1. [OPTIONAL] Install GPU version of PyTorch 1.1.0 if you have a local GPU.
 
     ```bash
-   conda install pytorch -c pytorch -y
+   conda install pytorch=1.1.0 -c pytorch -y
     ```
 
 1. Execute the training process simply double click the `train.bat` file.  You should get an average score of 0.3 after 
@@ -66,3 +75,10 @@ type: `conda deactivate`.
     ```bash
    train.bat
     ```
+#### Subsequent execution
+Assuming you have completed the above steps you can skip directly to the execution.
+
+    ```bash
+    activate tennis
+    train.bat
+     ```

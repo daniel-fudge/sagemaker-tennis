@@ -1,4 +1,4 @@
-name: src
+name: tennis
 channels:
   - defaults
 dependencies:
