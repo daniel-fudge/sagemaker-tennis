@@ -1,3 +1,10 @@
+# Project files
+*.gz
+*.npz
+*.pth
+scores.png
+container/src/Tennis*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
