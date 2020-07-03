@@ -99,7 +99,7 @@ Running on AWS is divided into the following four Notebooks.
     - Builds the GPU Docker image and publishes it to [ECR](https://aws.amazon.com/ecr/)
     - Spawns a remote training job with the GPU image
     - Retrieves the results from the associated [S3](https://aws.amazon.com/s3/) bucket 
-1. [Cost and Timing Sensitivity](sensitivity.ipynb) [in-work]
+1. [Cost and Timing Sensitivity](sensitivity.ipynb)
     - Compares the training [cost](https://aws.amazon.com/sagemaker/pricing/) and times on difference instance [types](https://aws.amazon.com/sagemaker/pricing/instance-types/)
 1. [Hyper-parameter Tuning](tuning.ipynb) [in-work]
     - After determining the most cost and time effective instance type, tune the hyper-parameters
