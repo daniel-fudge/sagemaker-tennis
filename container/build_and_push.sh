@@ -9,7 +9,7 @@ if [[ ${1} == "gpu" ]]; then
     gpu="yes"
 fi
 
-# Unpack Tennis executable if not alerady unpacked
+# Unpack Tennis executable if not already unpacked
 if [ ! -d "container/src/Tennis_Linux_NoVis" ]; then
     unzip container/Tennis_Linux_NoVis.zip -d container/src > /dev/null
 fi

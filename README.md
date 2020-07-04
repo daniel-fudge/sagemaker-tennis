@@ -101,6 +101,6 @@ Running on AWS is divided into the following four Notebooks.
     - Retrieves the results from the associated [S3](https://aws.amazon.com/s3/) bucket 
 1. [Cost and Timing Sensitivity](sensitivity.ipynb)
     - Compares the training [cost](https://aws.amazon.com/sagemaker/pricing/) and times on difference instance [types](https://aws.amazon.com/sagemaker/pricing/instance-types/)
-1. [Hyper-parameter Tuning](tuning.ipynb) [in-work]
+1. [Hyper-parameter Tuning](tuning.ipynb)
     - After determining the most cost and time effective instance type, tune the hyper-parameters
     - This determines the set of hyper-parameters that minimizes the number of training epochs

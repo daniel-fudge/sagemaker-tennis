@@ -1,7 +1,5 @@
 """
 This script trains and saves the model and plots its performance.
-
-Note:  You need to verify the env path is correct for you PC and OS.
 """
 
 import ast
@@ -84,7 +82,8 @@ def train(epochs, max_t, output_dir, model_dir):
     scores = list()
     scores_window = deque(maxlen=100)
     brain_name = env.brain_names[0]
-    start = time()
+    start_time = time()
+    i_episode = epochs
     for i_episode in range(1, epochs + 1):
         env_info = env.reset(train_mode=True)[brain_name]
         states = env_info.vector_observations
@@ -112,7 +111,7 @@ def train(epochs, max_t, output_dir, model_dir):
     print('{:d} training episodes completed.'.format(i_episode))
     mean_score = np.mean(scores_window)
     print('{:.2f} average score.'.format(mean_score))
-    duration = (time() - start)/60
+    duration = (time() - start_time)/60
     print('{:.2f} minutes of training.'.format(duration))
     print('{:.2f} training objective.'.format(i_episode - 1000*mean_score + 10*duration))
 
